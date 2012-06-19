@@ -122,8 +122,11 @@ $.extend(Datepicker.prototype, {
 	/* Debug logging (if enabled). */
 	log: function () {
 		if (this.debug) {
-			if ( RegExp(" AppleWebKit/").test(navigator.userAgent) ) {
+			var userAgent = navigator.userAgent;
+			if (RegExp(" AppleWebKit/").test(userAgent)) {
 				console.log.apply(console, arguments);
+			} else if (RegExp(" MSIE ").test(userAgent)) {
+				console.log(arguments);
 			} else {
 				console.log.apply('', arguments);
 			}
